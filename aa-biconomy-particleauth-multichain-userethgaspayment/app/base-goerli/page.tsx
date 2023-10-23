@@ -111,7 +111,7 @@ const Minter: React.FC = () => {
         };
         console.log("here before userop");
         let userOp = await smartAccount.buildUserOp([tx1, tx2]);
-        console.log(userOp);
+        console.log({ userOp });
 
         const userOpResponse = await smartAccount.sendUserOp(userOp);
         console.log("userOpHash", userOpResponse);

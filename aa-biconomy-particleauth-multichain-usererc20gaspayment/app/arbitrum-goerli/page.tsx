@@ -124,7 +124,6 @@ const Minter: React.FC = () => {
         };
         console.log("here before userop");
         let partialUserOp = await smartAccount.buildUserOp([tx1, tx2]);
-        console.log({ partialUserOp });
         const biconomyPaymaster =
           smartAccount.paymaster as IHybridPaymaster<SponsorUserOperationDto>;
 
@@ -179,6 +178,8 @@ const Minter: React.FC = () => {
         } catch (e) {
           console.log("error received ", e);
         }
+        console.log({ finalUserOp });
+
         const userOpResponse = await smartAccount.sendUserOp(finalUserOp);
         console.log("userOpHash", userOpResponse);
         const { receipt } = await userOpResponse.wait(1);

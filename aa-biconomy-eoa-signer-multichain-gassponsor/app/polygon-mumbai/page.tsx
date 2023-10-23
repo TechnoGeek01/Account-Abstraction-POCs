@@ -122,7 +122,6 @@ const Minter: React.FC = () => {
         console.log("here before userop");
         let userOp = await smartAccount.buildUserOp([tx1, tx2]);
         userOp.verificationGasLimit = 60000;
-        console.log({ userOp });
         const biconomyPaymaster =
           smartAccount.paymaster as IHybridPaymaster<SponsorUserOperationDto>;
         let paymasterServiceData: SponsorUserOperationDto = {
@@ -139,6 +138,8 @@ const Minter: React.FC = () => {
           );
 
         userOp.paymasterAndData = paymasterAndDataResponse.paymasterAndData;
+        console.log({ userOp });
+
         const userOpResponse = await smartAccount.sendUserOp(userOp);
         console.log("userOpHash", userOpResponse);
         const { receipt } = await userOpResponse.wait(1);
