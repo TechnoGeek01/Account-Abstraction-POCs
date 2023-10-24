@@ -103,6 +103,7 @@ const Minter: React.FC = () => {
           100000000000000
         );
         console.log("mintTx data", minTx.data);
+        console.log("transferTx data", transferTx.data);
         const tx1 = {
           to: erc20Address,
           data: minTx.data,

@@ -112,6 +112,8 @@ const Minter: React.FC = () => {
           100000000000000
         );
         console.log("mintTx data", minTx.data);
+        console.log("transferTx data", transferTx.data);
+
         const tx1 = {
           to: erc20Address,
           data: minTx.data,
@@ -122,7 +124,7 @@ const Minter: React.FC = () => {
         };
         console.log("here before userop");
         let userOp = await smartAccount.buildUserOp([tx1, tx2]);
-        userOp.verificationGasLimit = 60000;
+
         const biconomyPaymaster =
           smartAccount.paymaster as IHybridPaymaster<SponsorUserOperationDto>;
         let paymasterServiceData: SponsorUserOperationDto = {
