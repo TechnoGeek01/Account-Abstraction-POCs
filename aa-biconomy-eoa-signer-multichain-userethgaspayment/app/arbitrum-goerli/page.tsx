@@ -56,6 +56,7 @@ const Minter: React.FC = () => {
         entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
         defaultValidationModule: ownerShipModule,
         activeValidationModule: ownerShipModule,
+        index: 0, // salt value to generate smart account address
       });
       const smartAccountAddress =
         await biconomySmartAccount.getAccountAddress();
