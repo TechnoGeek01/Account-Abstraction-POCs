@@ -24,7 +24,7 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const erc20Address = "0x0ea80083dfd7c3534b6176b6042480638ef80420";
+const erc20Address = "0x2C6f54d8bB90ff07FE0fdC6918a185C5C8B8C8F2";
 
 const Minter: React.FC = () => {
   const [minted, setMinted] = useState(false);
@@ -96,12 +96,11 @@ const Minter: React.FC = () => {
     ) {
       try {
         const minTx = await contract.populateTransaction.mint(
-          smartAccountAddress,
-          1000000000000000
+          ethers.utils.parseEther("10")
         );
         const transferTx = await contract.populateTransaction.transfer(
           "0x0EE0BaE6D665F9435be79cdB6Dd2a34BFF62E1Ed",
-          100000000000000
+          ethers.utils.parseEther("5")
         );
         console.log("mintTx data", minTx.data);
         console.log("transferTx data", transferTx.data);
@@ -200,11 +199,20 @@ const Minter: React.FC = () => {
     <>
       <div>
         <h2 className="text-xl font-bold">
+          Mode: ERC20 (USDC) Gas fee payment
+        </h2>
+        <h2 className="text-xl font-bold">
           Chain ID: {`${ChainId.ARBITRUM_GOERLI_TESTNET}`}
         </h2>
         <h2 className="text-xl font-bold">
           Chain Name: {`${ChainId[ChainId.ARBITRUM_GOERLI_TESTNET]}`}
         </h2>
+        {!eoaOwnerAddress && !smartAccountAddress && (
+          <h2>
+            Please connect to metamask display the eoa owner and smart account
+            address
+          </h2>
+        )}
       </div>
 
       {eoaOwnerAddress && smartAccountAddress && (

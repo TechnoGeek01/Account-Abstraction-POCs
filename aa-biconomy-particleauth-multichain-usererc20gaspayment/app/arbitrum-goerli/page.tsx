@@ -20,7 +20,7 @@ import {
 import abi from "../../utils/abi.json";
 import { toast, ToastContainer } from "react-toastify";
 
-const erc20Address = "0x0ea80083dfd7c3534b6176b6042480638ef80420";
+const erc20Address = "0x2C6f54d8bB90ff07FE0fdC6918a185C5C8B8C8F2";
 
 const Minter: React.FC = () => {
   const [smartAccountAddress, setSmartAccountAddress] = useState<string>("");
@@ -106,12 +106,11 @@ const Minter: React.FC = () => {
           theme: "dark",
         });
         const minTx = await contract.populateTransaction.mint(
-          smartAccountAddress,
-          1000000000000000
+          ethers.utils.parseEther("10")
         );
         const transferTx = await contract.populateTransaction.transfer(
           "0x0EE0BaE6D665F9435be79cdB6Dd2a34BFF62E1Ed",
-          100000000000000
+          ethers.utils.parseEther("5")
         );
         console.log("mintTx data", minTx.data);
         console.log("transferTx data", transferTx.data);
@@ -223,6 +222,10 @@ const Minter: React.FC = () => {
     <>
       <div>
         <h2 className="text-xl font-bold">
+          Mode: ERC20 (USDC) Gas fee payment
+        </h2>
+
+        <h2 className="text-xl font-bold">
           Chain ID: {`${ChainId.ARBITRUM_GOERLI_TESTNET}`}
         </h2>
         <h2 className="text-xl font-bold">
@@ -251,6 +254,14 @@ const Minter: React.FC = () => {
         >
           Mint and transfer Erc20 Token -&gt; GasLess mode
         </button>
+
+        <h1>
+          Note:-
+          <br></br>
+          In this interaction the smart account mints 10 tokens to itself and
+          transfers 5 to the eoa owner in a single transaction
+        </h1>
+        <p>ERC20 Contract Address: {`${erc20Address}`}</p>
       </div>
 
       <ToastContainer
