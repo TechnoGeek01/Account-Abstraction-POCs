@@ -239,6 +239,14 @@ const Minter: React.FC = () => {
         >
           Mint and transfer ERC20 erc20 payment mode
         </button>
+
+        <h1>
+          Note:-
+          <br></br>
+          In this interaction the smart account mints 10 tokens to itself and
+          transfers 5 to an eoa in a single transaction
+        </h1>
+        <p>ERC20 Contract Address: {`${erc20Address}`}</p>
       </div>
 
       <ToastContainer

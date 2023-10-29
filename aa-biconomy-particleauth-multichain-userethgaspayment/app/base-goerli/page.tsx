@@ -190,7 +190,7 @@ const Minter: React.FC = () => {
           Note:-
           <br></br>
           In this interaction the smart account mints 10 tokens to itself and
-          transfers 5 to the eoa owner in a single transaction
+          transfers 5 to an eoa in a single transaction
         </h1>
         <p>ERC20 Contract Address: {`${erc20Address}`}</p>
       </div>
