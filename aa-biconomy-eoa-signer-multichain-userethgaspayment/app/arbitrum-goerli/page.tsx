@@ -164,7 +164,7 @@ const Minter: React.FC = () => {
         </h2>
         {!eoaOwnerAddress && !smartAccountAddress && (
           <h2>
-            Please connect to metamask display the eoa owner and smart account
+            Please connect your wallet display the eoa owner and smart account
             address
           </h2>
         )}
