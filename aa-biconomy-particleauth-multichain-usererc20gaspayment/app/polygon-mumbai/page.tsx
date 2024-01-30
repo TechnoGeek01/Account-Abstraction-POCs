@@ -123,7 +123,9 @@ const Minter: React.FC = () => {
           data: transferTx.data,
         };
         console.log("here before userop");
-        let partialUserOp = await smartAccount.buildUserOp([tx1, tx2]);
+        let partialUserOp = await smartAccount.buildUserOp([tx1, tx2], , {
+          skipBundlerGasEstimation: false,
+        });
         const biconomyPaymaster =
           smartAccount.paymaster as IHybridPaymaster<SponsorUserOperationDto>;
 
